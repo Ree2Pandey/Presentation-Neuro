@@ -20,10 +20,10 @@ library(tidyverse)  # load tidyverse, for working with datasets
 d <- 
   read_excel(
     "Double-Emx-KO_DATASET.xlsx", 
-    col_names = c("genotype", "visual", "cortex", "ratiovc", "posmed", "ratiopm", "area", "ratioarea", "motor", "ratiom"),
-    skip = 3
+   col_names = c("genotype", "visual", "cortex", "ratiovc", "posmed", "ratiopm", "area", "ratioarea", "motor", "ratiom"),
+  skip = 3
   ) %>% 
-  select(genotype, visual, ratiovc,motor, ratiom) %>% 
+  select(genotype, visual, ratiovc, motor, ratiom) %>% 
   filter(!str_detect(genotype, "3 allele")) %>% 
   mutate(genotype = as_factor(genotype)) %>% 
   print()
