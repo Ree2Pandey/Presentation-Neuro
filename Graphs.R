@@ -46,7 +46,7 @@ ggplot(d, aes(x=visual, y=genotype, color = genotype)) +
   guides(color = "none") +
   theme_gray(base_size = 16)                            # make text bigger; default was 11
 
-ggsave("figs/compare Visual Area between the treatments.png", width = 11.5, height = 4.76, units = "in")
+ggsave("figs/Compare V1 area between the treatments.png", width = 11.5, height = 4.76, units = "in")
 
 
 
