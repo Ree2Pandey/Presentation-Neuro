@@ -13,11 +13,11 @@ library(tidyverse)  # load tidyverse, for working with datasets
 # read the Presentation data
 d <- 
   read_excel(
-    "SFN Excel new.xlsx", 
+    "Neezu's.xlsx", 
     col_names = c("genotype", "visual", "cortex", "ratiovc", "posmed", "ratiopm", "area", "ratioarea", "motor", "ratiom"),
     skip = 3
   ) %>% 
-  select(genotype, visual, ratiovc, motor, ratiom) %>% 
+  select(genotype, cortex, ratiovc, ratiom, ) %>% 
   mutate(genotype = as_factor(genotype)) %>% 
   print()
 
