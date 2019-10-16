@@ -18,7 +18,7 @@ library(tidyverse)  # load tidyverse, for working with datasets
 # read the Presentation data
 d <- 
   read_excel(
-    "Book1.xlsx", 
+    "SFN Excel.xlsx", 
     col_names = c("genotype", "visual", "cortex", "ratiovc", "posmed", "ratiopm", "area", "ratioarea", "motor", "ratiom"),
     skip = 3
   ) %>% 
@@ -36,7 +36,7 @@ distinct(d, genotype)
 # Compare V1 area between the treatments --------------------------------
 
 ggplot(d, aes(x=genotype, y=visual, color = genotype)) +
-  geom_point(size = 4) +
+  geom_point(size = 2) +
   labs(
     x="Area (mm2) of the Primary Visual Area",
     y=NULL
