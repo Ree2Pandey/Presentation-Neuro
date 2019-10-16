@@ -36,7 +36,7 @@ distinct(d, genotype)
 # Compare V1 area between the treatments --------------------------------
 
 ggplot(d, aes(x=genotype, y=visual, color = genotype)) +
-  geom_point(size = 2) +
+  geom_point(size = 4) +
   labs(
     x="Area (mm2) of the Primary Visual Area",
     y=NULL

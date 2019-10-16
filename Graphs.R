@@ -14,7 +14,7 @@ library(tidyverse)  # load tidyverse, for working with datasets
 # read the Presentation data
 d <- 
   read_excel(
-    "Book1.xlsx", 
+    "SFN Excel.xlsx", 
     col_names = c("genotype", "visual", "cortex", "ratiovc", "posmed", "ratiopm", "area", "ratioarea", "motor", "ratiom"),
     skip = 3
   ) %>% 
@@ -66,7 +66,7 @@ ggplot(d, aes(x= genotype, y= ratiovc, color = genotype)) +
   geom_point(size = 4) +
   labs(
     title="Proportion of the Neocortex occupied by the Primary Visual Area",
-    y = "Proportion",
+   y = "Proportion",
     x=NULL
   ) +
   guides(color = "none") +
