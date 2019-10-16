@@ -14,12 +14,11 @@ library(tidyverse)  # load tidyverse, for working with datasets
 # read the Presentation data
 d <- 
   read_excel(
-    "SFN Excel.xlsx", 
+    "SFN Excel new.xlsx", 
     col_names = c("genotype", "visual", "cortex", "ratiovc", "posmed", "ratiopm", "area", "ratioarea", "motor", "ratiom"),
     skip = 3
   ) %>% 
   select(genotype, visual, ratiovc, motor, ratiom) %>% 
-  filter(!str_detect(genotype, "3 allele")) %>% 
   mutate(genotype = as_factor(genotype)) %>% 
   print()
 
@@ -43,11 +42,14 @@ d_mean <-
 
 # Compare V1 area between the treatments --------------------------------
 
-ggplot(d, aes(x= genotype, y=visual, color = genotype)) +
+ggplot(d, aes(x= genotype, y= visual, color = genotype)) +
+  geom_errorbar(mapping = aes(ymin = visual, ymax = visual), 
+                data = d_mean, color = "black", width = .5, size = 2) +
   geom_point(size = 4) +
   labs(
-    x="Area (mm2) of the Primary Visual Area",
-    y=NULL
+    title="Area of the Primary Visual Area",
+    y="Area (mm2)",
+    x="Genotype"
   ) +
   guides(color = "none") +
   theme_gray(base_size = 16)                            # make text bigger; default was 11
@@ -67,26 +69,31 @@ ggplot(d, aes(x= genotype, y= ratiovc, color = genotype)) +
   labs(
     title="Proportion of the Neocortex occupied by the Primary Visual Area",
    y = "Proportion",
-    x=NULL
+    x = "Genotype"
   ) +
   guides(color = "none") +
   theme_gray(base_size = 16)                            # make text bigger; default was 11
 
-ggsave("figs/Compare Visual Area by Cortex ratio between the treatments.png", width = 11.5, height = 4.76, units = "in")
+ggsave("figs/Compare Visual area by Cortex ratio between the treatments.png", width = 11.5, height = 4.76, units = "in")
 
 
 
 
 # Compare Motor Area between the treatments-------------------------------------------------------------
 
+
 ggplot(d, aes(x= genotype, y= motor, color = genotype)) +
+  geom_errorbar(mapping = aes(ymin = motor, ymax = motor), 
+                data = d_mean, color = "black", width = .5, size = 2) +
   geom_point(size = 4) +
   labs(
-    x="Area (mm2) of the Primary Motor Area",
-    y=NULL
+    title="Area of the Primary Motor Area",
+    y="Area (mm2)",
+    x="Genotype"
   ) +
   guides(color = "none") +
   theme_gray(base_size = 16)                            # make text bigger; default was 11
+
 
 ggsave("figs/Compare Motor Area between the treatments.png", width = 11.5, height = 4.76, units = "in")
 
@@ -96,11 +103,15 @@ ggsave("figs/Compare Motor Area between the treatments.png", width = 11.5, heigh
 
 # Compare Motor area by Cortex ratio between the treatments -------------------------------------------------------------
 
+
 ggplot(d, aes(x= genotype, y= ratiom, color = genotype)) +
+  geom_errorbar(mapping = aes(ymin = ratiom, ymax = ratiom), 
+                data = d_mean, color = "black", width = .5, size = 2) +
   geom_point(size = 4) +
   labs(
-    x="Proportion of the Neocortex occupied by the Primary Motor Area",
-    y=NULL
+    title="Proportion of the Neocortex occupied by the Primary Motor Area",
+    y = "Proportion",
+    x = "Genotype"
   ) +
   guides(color = "none") +
   theme_gray(base_size = 16)                            # make text bigger; default was 11
